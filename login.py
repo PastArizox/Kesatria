@@ -3,28 +3,7 @@ from pygame import font
 from tkinter import *
 import tkinter.messagebox as tkMessageBox
 import json
-import pymysql
 import constants as c
-
-
-
-# db=pymysql.connect("localhost","ayushi","yourpassword","demo")
-# cursor = db.cursor()
-# query = f"select password from user where username = {USERNAME.get()}"
-# try:
-#     cursor.execute(query)
-#     resultset = cursor.fetchall()
-#     for record in resultset:
-#         fname = record[0]
-#         lname = record[1]
-#         age = record[2]
-#         enrolent_no = record[3]
-#         print(f"Student: {fname} {lname}; Enrolment: {enrolment_no}; Age: {age}")
-# except:
-#     print("Sorry, we encountered a problem")
-
-# https://data-flair.training/blogs/python-database-access/
-
 
 #--  LOGIN THING  --#
 #region Login
@@ -42,12 +21,6 @@ x = (screen_width/2) - (width/2)
 y = (screen_height/2) - (height/2)
 root.geometry("%dx%d+%d+%d" % (width, height, x, y))
 root.resizable(0, 0)
-
-# def Database():
-#     global conn, cursor
-#     conn = sqlite3.connect("db_member.db")
-#     cursor = conn.cursor()
-#     cursor.execute("CREATE TABLE IF NOT EXISTS `member` (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT, password TEXT, firstname TEXT, lastname TEXT)")
 
 #=======================================VARIABLES=====================================
 USERNAME = StringVar()
