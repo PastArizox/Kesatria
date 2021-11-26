@@ -2,19 +2,10 @@ import pygame
 import constants as c
 import colors.ultracolors as color
 import json
+from source.utils.classes import Button
 from userinit.player import player
 
-class ButtonContinue(pygame.sprite.Sprite):
-    def __init__(self):
-        super(ButtonContinue, self).__init__()
-        self.image = pygame.image.load(c.pause_button_continue).convert_alpha()
-        self.rect = self.image.get_rect()
-        self.rect.x = c.DISPLAY_WIDTH // 2 - self.rect.width // 2
-        self.rect.y = c.DISPLAY_HEIGHT // 2 - self.rect.height // 2 - 100
-        self.snd_click = pygame.mixer.Sound("sound\\button_click_sound.ogg")
-        self.vel_x = 0
-        self.vel_y = 0
-
+class BContinue(Button):
     def update(self, event_list):
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y
@@ -28,19 +19,7 @@ class ButtonContinue(pygame.sprite.Sprite):
                     c.MENUS["PAUSE"] = False
                     c.MENUS[c.OLD_MENU] = True
 
-class ButtonSave(pygame.sprite.Sprite):
-    def __init__(self):
-        super(ButtonSave, self).__init__()
-        self.player = player
-        self.username = self.player.username
-        self.image = pygame.image.load(c.pause_button_save).convert_alpha()
-        self.rect = self.image.get_rect()
-        self.rect.x = c.DISPLAY_WIDTH // 2 - self.rect.width // 2
-        self.rect.y = c.DISPLAY_HEIGHT // 2 - self.rect.height // 2
-        self.snd_click = pygame.mixer.Sound("sound\\button_click_sound.ogg")
-        self.vel_x = 0
-        self.vel_y = 0
-
+class BSave(Button):
     def update(self, event_list):
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y
@@ -56,29 +35,29 @@ class ButtonSave(pygame.sprite.Sprite):
     def save(self):
         self.get_accounts_data()
         users = self.get_accounts_data()
+        username = player.username
+        users[username]["stats"]["life"] = player.life
+        users[username]["stats"]["resistance"] = player.resistance
+        users[username]["stats"]["determination"] = player.determination
+        users[username]["stats"]["magic"] = player.magic
+        users[username]["stats"]["gold"] = player.gold
+        users[username]["stats"]["damage"] = player.damage
+        users[username]["stats"]["level"] = player.level
+        users[username]["stats"]["exp"] = player.exp
 
-        users[self.username]["stats"]["life"] = self.player.life
-        users[self.username]["stats"]["resistance"] = self.player.resistance
-        users[self.username]["stats"]["determination"] = self.player.determination
-        users[self.username]["stats"]["magic"] = self.player.magic
-        users[self.username]["stats"]["gold"] = self.player.gold
-        users[self.username]["stats"]["damage"] = self.player.damage
-        users[self.username]["stats"]["level"] = self.player.level
-        users[self.username]["stats"]["exp"] = self.player.exp
+        users[username]["weapons"]["Active Thorn"] = player.active_thorn[1]
+        users[username]["weapons"]["Non-Active Thorn"] = player.non_active_THORN[1]
+        users[username]["weapons"]["Wood Sword"] = player.wood_sword[1]
+        users[username]["weapons"]["Renforced Sword"] = player.renforced_sword[1]
+        users[username]["weapons"]["Shadow Sword"] = player.shadow_sword[1]
+        users[username]["weapons"]["Takeda Sword"] = player.takeda_sword[1]
+        users[username]["weapons"]["Shinsu Sword"] = player.shinsu_sword[1]
 
-        users[self.username]["weapons"]["Active Thorn"] = self.player.active_thorn[1]
-        users[self.username]["weapons"]["Non-Active Thorn"] = self.player.non_active_THORN[1]
-        users[self.username]["weapons"]["Wood Sword"] = self.player.wood_sword[1]
-        users[self.username]["weapons"]["Renforced Sword"] = self.player.renforced_sword[1]
-        users[self.username]["weapons"]["Shadow Sword"] = self.player.shadow_sword[1]
-        users[self.username]["weapons"]["Takeda Sword"] = self.player.takeda_sword[1]
-        users[self.username]["weapons"]["Shinsu Sword"] = self.player.shinsu_sword[1]
-
-        users[self.username]["armor"]["Wood Armor"] = self.player.wood_armor[1]
-        users[self.username]["armor"]["Renforced Armor"] = self.player.renforced_armor[1]
-        users[self.username]["armor"]["Shadow Armor"] = self.player.shadow_armor[1]
-        users[self.username]["armor"]["Takeda Armor"] = self.player.takeda_armor[1]
-        users[self.username]["armor"]["Shinsu Armor"] = self.player.shinsu_armor[1]
+        users[username]["armor"]["Wood Armor"] = player.wood_armor[1]
+        users[username]["armor"]["Renforced Armor"] = player.renforced_armor[1]
+        users[username]["armor"]["Shadow Armor"] = player.shadow_armor[1]
+        users[username]["armor"]["Takeda Armor"] = player.takeda_armor[1]
+        users[username]["armor"]["Shinsu Armor"] = player.shinsu_armor[1]
 
         with open("./accounts.json", "w") as account:
             json.dump(users, account, indent = 4)
@@ -94,17 +73,7 @@ class ButtonSave(pygame.sprite.Sprite):
                 users = json.load(account)
         return users
 
-class ButtonQuit(pygame.sprite.Sprite):
-    def __init__(self):
-        super(ButtonQuit, self).__init__()
-        self.image = pygame.image.load(c.pause_button_quit).convert_alpha()
-        self.rect = self.image.get_rect()
-        self.rect.x = c.DISPLAY_WIDTH // 2 - self.rect.width // 2
-        self.rect.y = c.DISPLAY_HEIGHT // 2 - self.rect.height // 2 + 100
-        self.snd_click = pygame.mixer.Sound("sound\\button_click_sound.ogg")
-        self.vel_x = 0
-        self.vel_y = 0
-
+class BQuit(Button):
     def update(self, event_list):
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y

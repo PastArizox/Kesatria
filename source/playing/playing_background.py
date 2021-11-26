@@ -2,7 +2,8 @@ import pygame
 import constants as c
 import colors.ultracolors as color
 from userinit.player import player
-from source.playing.playing_objects import ButtonShop, ButtonQuest, Username, StatsLabel, ButtonInventory, ButtonSettings
+# from source.playing.playing_objects import ButtonShop, ButtonQuest, Username, StatsLabel, ButtonInventory, ButtonSettings
+from source.playing.playing_objects import BShop, BInventory, BQuest, BSettings,Username, StatsLabel
 
 class BG(pygame.sprite.Sprite):
     def __init__(self):
@@ -14,10 +15,10 @@ class BG(pygame.sprite.Sprite):
         # init player and objects
         self.player = player
         self.player.image = self.player.image.convert_alpha()
-        self.button_shop = ButtonShop()
-        self.button_quest = ButtonQuest()
-        self.button_inventory = ButtonInventory()
-        self.button_settings = ButtonSettings()
+        self.button_shop = BShop(c.playing_button_shop, 10, c.DISPLAY_HEIGHT - 80)
+        self.button_quest = BQuest(c.playing_button_quest, self.button_shop.rect.x, self.button_shop.rect.y - 80)
+        self.button_inventory = BInventory(c.playing_button_inventory, self.button_quest.rect.x, self.button_quest.rect.y - 80)
+        self.button_settings = BSettings(c.playing_button_settings, self.button_inventory.rect.x, self.button_inventory.rect.y - 80)
         self.player_name = Username()
         self.player_life = StatsLabel(f"Life: {self.player.life}", 10, 10, self.player.life)
         self.player_resist = StatsLabel(f"Resistance: {self.player.resistance}", 10, 30, self.player.resistance)
@@ -45,13 +46,7 @@ class BG(pygame.sprite.Sprite):
         self.objects.add(self.player_gold)
         self.objects.add(self.player_level)
         self.objects.add(self.player_magic)
-        # vasic vel
-        self.vel_x = 0
-        self.vel_y = 0
 
-    def update(self, event_list):
-        # update all objects in the group
-        self.objects.update(event_list)
         # update text
         self.player_gold.value = f"Gold: {self.player.gold}"
         self.player_life.value = f"Life: {self.player.life}"
@@ -70,6 +65,15 @@ class BG(pygame.sprite.Sprite):
         self.player_exp.image = self.player_exp.font.render(self.player_exp.value, True, self.player_exp.color, None)
         self.player_level.image = self.player_level.font.render(self.player_level.value, True, self.player_level.color, None)
         self.player_magic.image = self.player_magic.font.render(self.player_magic.value, True, self.player_magic.color, None)
+
+        # vasic vel
+        self.vel_x = 0
+        self.vel_y = 0
+
+    def update(self, event_list):
+        # update all objects in the group
+        self.objects.update(event_list)
+        
         # basic vel
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y

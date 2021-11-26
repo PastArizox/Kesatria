@@ -2,7 +2,7 @@ import pygame
 import constants as c
 import colors.ultracolors as color
 import random
-from source.main.main_objects import ButtonPlay, ButtonCredits, Title
+from source.main.main_objects import BPlay, BCredits, Title
 
 class BG(pygame.sprite.Sprite):
     def __init__(self):
@@ -13,8 +13,9 @@ class BG(pygame.sprite.Sprite):
         self.image.fill(self.color)
         self.rect = self.image.get_rect()
         # init objects
-        self.button_play = ButtonPlay()
-        self.button_credits = ButtonCredits()
+        self.button_play = BPlay(c.main_menu_play_button, 0, c.DISPLAY_HEIGHT // 2 - 10)
+        self.button_play.rect.x = c.DISPLAY_WIDTH // 2 - self.button_play.rect.width // 2
+        self.button_credits = BCredits(c.main_menu_credits_button, self.button_play.rect.x, c.DISPLAY_HEIGHT // 2 + 100)
         self.title = Title()
         # init sprite group for objects
         self.objects = pygame.sprite.Group()

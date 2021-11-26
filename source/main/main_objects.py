@@ -1,21 +1,9 @@
 import pygame
 import constants as c
 import colors.ultracolors as color
+from source.utils.classes import Button
 
-class ButtonPlay(pygame.sprite.Sprite):
-    def __init__(self):
-        super(ButtonPlay, self).__init__()
-        self.width = 300
-        self.height = 70
-        self.size = (self.width, self.height)
-        self.image = pygame.image.load(c.main_menu_play_button).convert_alpha()
-        self.rect = self.image.get_rect()
-        self.rect.x = c.DISPLAY_WIDTH // 2 - self.width // 2
-        self.rect.y = c.DISPLAY_HEIGHT // 2 - 10
-        self.snd_click = pygame.mixer.Sound("sound\\button_click_sound.ogg")
-        self.vel_x = 0
-        self.vel_y = 0
-
+class BPlay(Button):
     def update(self, event_list):
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y
@@ -34,22 +22,7 @@ class ButtonPlay(pygame.sprite.Sprite):
                     c.MENUS["MAIN"] = False
                     c.MENUS["PLAYING"] = True
 
-
-
-class ButtonCredits(pygame.sprite.Sprite):
-    def __init__(self):
-        super(ButtonCredits, self).__init__()
-        self.width = 300
-        self.height = 70
-        self.size = (self.width, self.height)
-        self.image = pygame.image.load(c.main_menu_credits_button).convert_alpha()
-        self.rect = self.image.get_rect()
-        self.rect.x = c.DISPLAY_WIDTH // 2 - self.width // 2
-        self.rect.y = c.DISPLAY_HEIGHT // 2 + 100
-        self.snd_click = pygame.mixer.Sound("sound\\button_click_sound.ogg")
-        self.vel_x = 0
-        self.vel_y = 0
-
+class BCredits(Button):
     def update(self, event_list):
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y

@@ -1,6 +1,7 @@
 import pygame
 import constants as c
 import colors.ultracolors as color
+from source.utils.classes import Button
 from userinit.player import player
 import random
 
@@ -24,17 +25,7 @@ class Username(pygame.sprite.Sprite):
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y
 
-class ButtonShop(pygame.sprite.Sprite):
-    def __init__(self):
-        super(ButtonShop, self).__init__()
-        self.image = pygame.image.load(c.playing_button_shop).convert_alpha()
-        self.rect = self.image.get_rect()
-        self.rect.x = c.DISPLAY_WIDTH - self.rect.width - 10
-        self.rect.y = c.DISPLAY_HEIGHT - self.rect.height - 10
-        self.snd_click = pygame.mixer.Sound("sound\\button_click_sound.ogg")
-        self.vel_x = 0
-        self.vel_y = 0
-
+class BShop(Button):
     def update(self, event_list):
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y
@@ -48,18 +39,7 @@ class ButtonShop(pygame.sprite.Sprite):
                     c.MENUS["PLAYING"] = False
                     c.MENUS["SHOP"] = True
 
-class ButtonQuest(pygame.sprite.Sprite):
-    def __init__(self):
-        super(ButtonQuest, self).__init__()
-        self.button_shop = ButtonShop()
-        self.image = pygame.image.load(c.playing_button_quest).convert_alpha()
-        self.rect = self.image.get_rect()
-        self.rect.x = c.DISPLAY_WIDTH - self.rect.width - 10
-        self.rect.y = self.button_shop.rect.y - self.rect.height - 10
-        self.snd_click = pygame.mixer.Sound("sound\\button_click_sound.ogg")
-        self.vel_x = 0
-        self.vel_y = 0
-
+class BQuest(Button):
     def update(self, event_list):
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y
@@ -73,17 +53,7 @@ class ButtonQuest(pygame.sprite.Sprite):
                     c.MENUS["PLAYING"] = False
                     c.MENUS["QUEST"] = True
 
-class ButtonInventory(pygame.sprite.Sprite):
-    def __init__(self):
-        super(ButtonInventory, self).__init__()
-        self.image = pygame.image.load(c.playing_button_inventory).convert_alpha()
-        self.rect = self.image.get_rect()
-        self.rect.x = 10
-        self.rect.y = c.DISPLAY_HEIGHT - self.rect.height - 10
-        self.snd_click = pygame.mixer.Sound("sound\\button_click_sound.ogg")
-        self.vel_x = 0
-        self.vel_y = 0
-
+class BInventory(Button):
     def update(self, event_list):
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y
@@ -97,18 +67,7 @@ class ButtonInventory(pygame.sprite.Sprite):
                     c.MENUS["PLAYING"] = False
                     c.MENUS["INVENTORY"] = True
 
-class ButtonSettings(pygame.sprite.Sprite):
-    def __init__(self):
-        super(ButtonSettings, self).__init__()
-        self.button_inventory = ButtonInventory()
-        self.image = pygame.image.load(c.playing_button_settings).convert_alpha()
-        self.rect = self.image.get_rect()
-        self.rect.x = 10
-        self.rect.y = self.button_inventory.rect.y - self.rect.height - 10
-        self.snd_click = pygame.mixer.Sound("sound\\button_click_sound.ogg")
-        self.vel_x = 0
-        self.vel_y = 0
-
+class BSettings(Button):
     def update(self, event_list):
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y

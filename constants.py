@@ -35,24 +35,30 @@ EXP = [100, 200, 400, 800, 1600, 3200, 6400, 12800, 25600, 51200,
 3518437208883200, 7036874417766400, 14073748835532800, 28147497671065600]
 
 # IMAGES
+
 # credits menu
 credits_image = "images\\credits\\credits_image.png"
+
 # inventory menu
 inventory_background_black = "images\\inventory\\inventory_background_black.png"
 inventory_background = "images\\inventory\\inventory_background.png"
 inventory_button_equip = "images\\inventory\\inventory_button_equip.png"
 inventory_button_unequip = "images\\inventory\\inventory_button_unequip.png"
+
 # main menu
 main_menu_credits_button = "images\\main\\main_menu_credits_button.png"
 main_menu_play_button = "images\\main\\main_menu_play_button.png"
 main_menu_title = "images\\main\\main_menu_title.png"
+
 # pause menu
 pause_button_continue = "images\\pause\\pause_button_continue.png"
 pause_button_quit = "images\\pause\\pause_button_quit.png"
 pause_button_save = "images\\pause\\pause_button_save.png"
 pause_menu_background = "images\\pause\\pause_menu_background.png"
+
 # player image
 player_image = "images\\player\\player_image.png"
+
 # player items
 player_renforced_armor = "images\\player\\player_renforced_armor.png"
 player_renforced_sword = "images\\player\\player_renforced_sword.png"
@@ -67,17 +73,23 @@ player_wood_sword = "images\\player\\player_wood_sword.png"
 # player thorns
 player_active_thorn = "images\\player\\player_active_thorn.png"
 player_non_active_thorn = "images\\player\\player_non_active_thorn.png"
+
 # playing menu
 playing_background = "images\\playing\\playing_background.png"
 playing_button_inventory = "images\\playing\\playing_button_inventory.png"
 playing_button_quest = "images\\playing\\playing_button_quest.png"
 playing_button_settings = "images\\playing\\playing_button_settings.png"
 playing_button_shop = "images\\playing\\playing_button_shop.png"
+
 # shop menu
 shop_background_black = "images\\shop\\shop_background_black.png"
 shop_background = "images\\shop\\shop_background.png"
 shop_buy_button = "images\\shop\\shop_buy_button.png"
 shop_default_icon_item_image = "images\\shop\\shop_default_icon_item_image.png"
 shop_default_icon = "images\\shop\\shop_default_icon.png"
+
 # questMenu menu
 questMenu_background_black = "images\\questMenu\\questMenu_background_black.png"
+
+# SOUND
+click_sound = "sound\\button_click_sound.ogg"
