@@ -50,7 +50,7 @@ class Item(pygame.sprite.Sprite):
         self.vel_x = 0
         self.vel_y = 0
 
-    def update(self, event_list, unequip_button, equip_button, item_image, name, resist, deter, magic, dmg, price):
+    def update(self, event_list, unequip_button, equip_button, item_image, name, resist, deter, magic, dmg):
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y
 
@@ -75,14 +75,12 @@ class Item(pygame.sprite.Sprite):
                     deter.value = f"Determination: {self.item[6]}"
                     magic.value = f"Magic: {self.item[7]}"
                     dmg.value = f"Damage: {self.item[3]}"
-                    price.value = f"Price: {self.item[2]} Golds"
 
                     name.image = name.font.render(name.value, True, name.color, None)
                     resist.image = resist.font.render(resist.value, True, resist.color, None)
                     deter.image = deter.font.render(deter.value, True, deter.color, None)
                     magic.image = magic.font.render(magic.value, True, magic.color, None)
                     dmg.image = dmg.font.render(dmg.value, True, dmg.color, None)
-                    price.image = price.font.render(price.value, True, price.color, None)
                     
                     print(self.item)
 

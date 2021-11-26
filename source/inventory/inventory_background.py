@@ -28,7 +28,6 @@ class BG(pygame.sprite.Sprite):
         self.deter_stats_label = StatsLabel(f"", 430)
         self.magic_stats_label = StatsLabel(f"", 460)
         self.damage_stats_label = StatsLabel(f"", 490)
-        self.price_label = StatsLabel(f"", 520)
         # init groups for sprite objects
         self.objects = pygame.sprite.Group()
         self.objects2 = pygame.sprite.Group()
@@ -42,7 +41,6 @@ class BG(pygame.sprite.Sprite):
         self.objects.add(self.deter_stats_label)
         self.objects.add(self.magic_stats_label)
         self.objects.add(self.damage_stats_label)
-        self.objects.add(self.price_label)
 
         self.buttons_object.add(self.unequip_button)
         self.buttons_object.add(self.equip_button)
@@ -59,7 +57,7 @@ class BG(pygame.sprite.Sprite):
     def update(self, event_list):
         # update all objects in groups
         self.objects.update(event_list)
-        self.objects2.update(event_list, self.unequip_button, self.equip_button, self.item_image, self.name_stats_label, self.resist_stats_label, self.deter_stats_label, self.magic_stats_label, self.damage_stats_label, self.price_label)
+        self.objects2.update(event_list, self.unequip_button, self.equip_button, self.item_image, self.name_stats_label, self.resist_stats_label, self.deter_stats_label, self.magic_stats_label, self.damage_stats_label)
         self.buttons_object.update(event_list, self.player)
         self.add_items()
         # basic vel
