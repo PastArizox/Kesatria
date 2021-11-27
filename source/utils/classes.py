@@ -12,6 +12,10 @@ class Button(pygame.sprite.Sprite):
         self.vel_x = 0
         self.vel_y = 0
 
+    def update(self, event_list):
+        self.rect.x += self.vel_x
+        self.rect.y += self.vel_y
+
 class Label(pygame.sprite.Sprite):
     def __init__(self, value:str, size:int, font, color, x:int, y:int):
         super(Label, self).__init__()
@@ -25,3 +29,7 @@ class Label(pygame.sprite.Sprite):
         self.rect.y = y
         self.vel_x = 0
         self.vel_y = 0
+
+    def update(self, event_list):
+        self.rect.x += self.vel_x
+        self.rect.y += self.vel_y
