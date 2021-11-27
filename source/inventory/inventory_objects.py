@@ -131,21 +131,6 @@ class UnequipButton(pygame.sprite.Sprite):
                             print("Unequiped")
                             print(self.item)
 
-class StatsLabel(pygame.sprite.Sprite):
-    def __init__(self, value:str, y:int = 0, var:int = None):
-        super(StatsLabel, self).__init__()
-        self.player = player
-        self.value = value
-        self.font_size = 25
-        self.font = pygame.font.Font(None, self.font_size)
-        self.color = color.WHITE
-        self.image = self.font.render(self.value, True, self.color, None)
-        self.rect = self.image.get_rect()
-        self.rect.x = 780
-        self.rect.y = y
-        self.vel_x = 0
-        self.vel_y = 0
-
 class EquipButton(pygame.sprite.Sprite):
     def __init__(self):
         super(EquipButton, self).__init__()

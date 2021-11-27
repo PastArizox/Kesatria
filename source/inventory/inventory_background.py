@@ -2,7 +2,8 @@ import pygame
 import constants as c
 import colors.ultracolors as color
 from userinit.player import player
-from source.inventory.inventory_objects import Menu, Item, UnequipButton, EquipButton, ItemImage, StatsLabel, InfoLabel
+from source.utils.classes import Label
+from source.inventory.inventory_objects import Menu, Item, UnequipButton, EquipButton, ItemImage, InfoLabel
 from source.shop.shop_background import BG as BGShop
 
 class BG(pygame.sprite.Sprite):
@@ -23,11 +24,11 @@ class BG(pygame.sprite.Sprite):
         # init labels
         self.infos_label = InfoLabel()
         
-        self.name_stats_label = StatsLabel(f"", 370)
-        self.resist_stats_label = StatsLabel(f"", 400)
-        self.deter_stats_label = StatsLabel(f"", 430)
-        self.magic_stats_label = StatsLabel(f"", 460)
-        self.damage_stats_label = StatsLabel(f"", 490)
+        self.name_stats_label = Label(f"", 25, None, color.WHITE, 780, 370)
+        self.resist_stats_label = Label(f"", 25, None, color.WHITE, 780, 400)
+        self.deter_stats_label = Label(f"", 25, None, color.WHITE, 780, 430)
+        self.magic_stats_label = Label(f"", 25, None, color.WHITE, 780, 460)
+        self.damage_stats_label = Label(f"", 25, None, color.WHITE, 780, 490)
         # init groups for sprite objects
         self.objects = pygame.sprite.Group()
         self.objects2 = pygame.sprite.Group()

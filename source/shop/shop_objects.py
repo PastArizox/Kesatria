@@ -17,23 +17,6 @@ class Menu(pygame.sprite.Sprite):
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y
 
-class InfoLabel(pygame.sprite.Sprite):
-    def __init__(self):
-        super(InfoLabel, self).__init__()
-        self.font_size = 50
-        self.font = pygame.font.Font(None, self.font_size)
-        self.color = color.WHITE
-        self.image = self.font.render("INFOS", True, self.color, None)
-        self.rect = self.image.get_rect()
-        self.rect.x = 862
-        self.rect.y = 87
-        self.vel_x = 0
-        self.vel_y = 0
-
-    def update(self, event_list):
-        self.rect.x += self.vel_x
-        self.rect.y += self.vel_y
-
 class Item(pygame.sprite.Sprite):
     def __init__(self, item:dict, image:str, x:int, y:int):
         super(Item, self).__init__()
@@ -103,21 +86,6 @@ class ItemImage(pygame.sprite.Sprite):
     def update(self, event_list):
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y
-
-class StatsLabel(pygame.sprite.Sprite):
-    def __init__(self, value:str, y:int = 0, var:int = None):
-        super(StatsLabel, self).__init__()
-        self.player = player
-        self.value = value
-        self.font_size = 25
-        self.font = pygame.font.Font(None, self.font_size)
-        self.color = color.WHITE
-        self.image = self.font.render(self.value, True, self.color, None)
-        self.rect = self.image.get_rect()
-        self.rect.x = 780
-        self.rect.y = y
-        self.vel_x = 0
-        self.vel_y = 0
 
 class BuyButton(pygame.sprite.Sprite):
     def __init__(self):

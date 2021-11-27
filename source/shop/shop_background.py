@@ -1,7 +1,8 @@
 import pygame
 import constants as c
 import colors.ultracolors as color
-from source.shop.shop_objects import Menu, InfoLabel, Item, ItemImage, StatsLabel, BuyButton
+from source.utils.classes import Label
+from source.shop.shop_objects import Menu, Item, ItemImage, BuyButton
 from userinit.player import player
 
 class BG(pygame.sprite.Sprite):
@@ -36,14 +37,14 @@ class BG(pygame.sprite.Sprite):
         self.item_non_activ_THORN = Item(self.player.non_active_THORN, c.player_non_active_thorn, self.starting_x + self.offset_x * 0, self.starting_y + self.offset_y * 2)
         self.item_activ_thorn = Item(self.player.active_thorn, c.player_active_thorn, self.starting_x + self.offset_x * 1, self.starting_y + self.offset_y * 2)
         # init labels
-        self.infos_label = InfoLabel()
+        self.infos_label = Label(f"INFOS", 50, None, color.WHITE, 862, 87)
         
-        self.name_stats_label = StatsLabel(f"", 370)
-        self.resist_stats_label = StatsLabel(f"", 400)
-        self.deter_stats_label = StatsLabel(f"", 430)
-        self.magic_stats_label = StatsLabel(f"", 460)
-        self.damage_stats_label = StatsLabel(f"", 490)
-        self.price_label = StatsLabel(f"", 520)
+        self.name_stats_label = Label(f"", 25, None, color.WHITE, 780, 370)
+        self.resist_stats_label = Label(f"", 25, None, color.WHITE, 780, 400)
+        self.deter_stats_label = Label(f"", 25, None, color.WHITE, 780, 430)
+        self.magic_stats_label = Label(f"", 25, None, color.WHITE, 780, 460)
+        self.damage_stats_label = Label(f"", 25, None, color.WHITE, 780, 490)
+        self.price_label = Label(f"", 25, None, color.WHITE, 780, 520)
         # init buy button
         self.buy_button = BuyButton()
         # init objects sprite group (objects, item_objects, buttons)
