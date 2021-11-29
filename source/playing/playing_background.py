@@ -3,7 +3,6 @@ import constants as c
 import colors.ultracolors as color
 from userinit.player import player
 from source.utils.classes import Label
-# from source.playing.playing_objects import ButtonShop, ButtonQuest, Username, StatsLabel, ButtonInventory, ButtonSettings
 from source.playing.playing_objects import BShop, BInventory, BQuest, BSettings
 
 class BG(pygame.sprite.Sprite):
