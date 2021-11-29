@@ -16,4 +16,5 @@ class BG(pygame.sprite.Sprite):
         self.vel_y = 0
 
     def update(self, event_list):
-        pass
+        self.rect.x += self.vel_x
+        self.rect.y += self.vel_y
